@@ -9,18 +9,15 @@ $stack = HandlerStack::create();
 
 include(__DIR__."/config.php");
 $oauth = new Oauth1([
-  'consumer_key'   => '',
-  'consumer_secret'   => '',
-  'token'   => '',
-  'token_secret'   => ''
+  'grant_type'   => 'client_credentials',
+  'client_id'   => 'HtTI4LUFLFJvvnR5V4foVA',
+  'client_secret'   => 'gBMZy7u6UeACA1EcLOJO5LMMP11LDahXbsGguKpuYdLBdQw2aVfvLqhQU3j3ezQo'
   ]);
 $stack->push($oauth);
 
-$client = new Client(['base_uri' => 'https://api.twitter.com/1.1/', 
+$client = new Client(['base_uri' => 'https://api.yelp.com/v3/', 
                       'handler' => $stack
                      ]);
-
-
 
 $res = $client->get('search/tweets.json', 
                             ['auth' => 'oauth',
