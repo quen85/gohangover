@@ -3,7 +3,7 @@ require_once(__DIR__."/../vendor/autoload.php");
 
 use \GuzzleHttp\Client;
 
-$client = new Client(['base_uri' => "http://localhost/gohangover"]);
+$client = new Client(['base_uri' => "http://localhost/gohangover/web"]);
 
 // $reponse = $client->request("GET", "/", ["query" => ["q" =>  "le respect"]]);
 // // $reponse = $client->get("/", ["query" => ["q" =>  "le respect"]]);

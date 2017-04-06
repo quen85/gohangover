@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+$client = new Client(['base_uri' => "http://localhost/gohangover/web"]);
 
 $stack = HandlerStack::create();
 
@@ -20,12 +21,12 @@ $oauth = new Oauth1([
   ]);
 $stack->push($oauth);
 
-$client = new Client(['base_uri' => 'https://api.yelp.com/v3/', 
+$yelp = new Client(['base_uri' => 'https://api.yelp.com/v3/', 
                       'handler' => $stack
                      ]);
 
 $app->get('/bars', function(Request $request) use ($app){
-  $res = $client->get('businesses/search', 
+  $res = $yelp->get('businesses/search', 
                             ['term' => 'bars',
                             'latitude' => 37.786882,
                             'longitude' => -122.399972
