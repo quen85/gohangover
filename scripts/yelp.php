@@ -4,6 +4,11 @@ require_once(__DIR__."/../vendor/autoload.php");
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
+use Silex\Application;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+
 
 $stack = HandlerStack::create();
 
@@ -19,15 +24,12 @@ $client = new Client(['base_uri' => 'https://api.yelp.com/v3/',
                       'handler' => $stack
                      ]);
 
-$res = $client->get('search/tweets.json', 
-                            ['auth' => 'oauth',
-                             'query' => [
-                                'q' => "Logan"
-                                'result_type' => 'recent'
-                              ]
+$app->get('/bars', function(Request $request) use ($app){
+  $res = $client->get('businesses/search', 
+                            ['term' => 'bars',
+                            'latitude' => 37.786882,
+                            'longitude' => -122.399972
                             ]);
-$flux = json_decode($res->getBody()->__toString())->statuses;
-
-foreach ($flux as $twit) {
-  echo $twit->text."\n";
-}
+  $flux = json_decode($res->getBody()->__toString());
+  return new JsonResponse($flux, 200);
+});
