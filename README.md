@@ -11,12 +11,12 @@ les 3 API utilisées pour ce projet sont les suivantes :
 - Yelp 
 - Uber 
 
-####Pour chacune de ses API utilisées certaines clés sont nécessaires : 
+#### Pour chacune de ses API utilisées certaines clés sont nécessaires : 
 - Pour google maps seulement une API KEY relié à un compte google à été utilisé. 
 - Yelp des identifiant sont nécessaire, le id pour faire fonctionner l’API vous seront envoyée par email. Il faudra les insérer dans le fichiers config qui est dans le dossier scripts 
 - UBER : il faut créer son projet sur le site uber, une fois le projet créé et les clés récupérées il suffit de se rendre sur le lien : https://developer.uber.com/docs/trip-experiences/guides/authentication jusqu’à obtenir l’access token. et donc implémenter dans fichier config.php la variable $TOKEN_UBER
 
-####Procédure d'installation : 
+#### Procédure d'installation : 
 1) Installer composer et guzzle 
 2) Insérer les configurations nécessaires pour les identifiants API 
 3) Tester le service GoHangover sur [localhost]/gohangover/web
