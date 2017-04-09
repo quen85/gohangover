@@ -34,7 +34,7 @@ $bars = query_api($term, $location);
     <div class="color-bg">
       <div id="map"></div>
     </div>
-    <p>Click on a place on the map and find a Uber</p>
+    <p>Click on a place on the map and find a Uber. It may take few long seconds sorry</p>
     <script>
       function initMap() {
         var location = {lat: 48.866667, lng: 2.333333};
