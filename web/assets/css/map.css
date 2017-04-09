@@ -4,12 +4,20 @@
   background-color: #242f3e;
 }
 
+a{
+  color: white;
+  text-align: left;
+  display: block;
+  margin-top: 30px;
+  text-decoration: none;
+}
+
 h1{
   font-family: 'Barrio', cursive;
   font-size: 50px;
   margin-top: 100px;
 }
-h2{
+h2, p{
   font-family: 'Linden Hill', cursive;
 }
 /*-------MAP------*/

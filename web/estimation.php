@@ -16,6 +16,7 @@ require_once(__DIR__."/../scripts/uber.php");
   </head>
   <body>
     <div class="uber">
+    <a href="index.php"><- Go Back</a>
       <h1>Estimation du trajet :</h1>
       <?php $estimation = getEstimation($_GET['startlat'], $_GET['startlon'], $_GET['endlat'], $_GET['endlon']); ?>
       <p>Distance : <?php echo ($estimation->trip->distance_estimate*1.60934); ?> km</p>

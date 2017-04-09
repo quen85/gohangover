@@ -34,6 +34,7 @@ $bars = query_api($term, $location);
     <div class="color-bg">
       <div id="map"></div>
     </div>
+    <p>Click on a place on the map and find a Uber</p>
     <script>
       function initMap() {
         var location = {lat: 48.866667, lng: 2.333333};
@@ -130,9 +131,6 @@ $bars = query_api($term, $location);
             };
             $lat_loc = pos.lat;
             $lng_loc = pos.lng;
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });
