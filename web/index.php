@@ -1,6 +1,7 @@
 <?php
 require_once("../vendor/autoload.php");
 require_once(__DIR__."/../scripts/yelp.php");
+require_once(__DIR__."/../scripts/uber.php");
 
 /**
  * User input is handled here 
@@ -120,6 +121,31 @@ $bars = query_api($term, $location);
             }
           ]
         });
+        var infoWindow = new google.maps.InfoWindow({map: map});
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            $lat_loc = pos.lat;
+            $lng_loc = pos.lng;
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        }
         <?php foreach ($bars as $bar): ?>
           var marker = new google.maps.Marker({
             position: {
@@ -128,6 +154,15 @@ $bars = query_api($term, $location);
             },
             map: map
           });
+          marker.addListener('click', function() {
+            navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            window.location = '/gohangover/web/estimation.php?startlat=' + pos.lat + '&startlon=' + pos.lng + '&endlat=' + marker.getPosition().lat() + '&endlon=' + marker.getPosition().lng();
+          });
+        });
         <?php endforeach; ?>
       }
     </script>
