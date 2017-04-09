@@ -1,6 +1,6 @@
 # Gohangover
 
-##Find your bar, drink as much as you can and go home safely with Uber
+## Find your bar, drink as much as you can and go home safely with Uber
 
 GoHangover est un service de qui aidera les personnes à trouver un bar dans les environs du lieu où elle se situe ainsi qu’un uber pour la suite de la soirée. 
 
