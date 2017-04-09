@@ -24,7 +24,7 @@ $GRANT_TYPE = "client_credentials";
 // Defaults for our simple example.
 $DEFAULT_TERM = "bars";
 $DEFAULT_LOCATION = "Paris, France";
-$SEARCH_LIMIT = 10;
+$SEARCH_LIMIT = 30;
 
 /**
  * Given a bearer token, send a GET request to the API.
@@ -174,54 +174,17 @@ function query_api($term, $location) {
     $response = json_decode(search($bearer_token, $term, $location));
     $business_id = $response->businesses[0]->id;
     
-    print sprintf(
-        "%d businesses found, querying business info for the top result \"%s\"\n\n",         
-        count($response->businesses),
-        $business_id
-    );
+    // print sprintf(
+    //     "%d businesses found, querying business info for the top result \"%s\"\n\n",         
+    //     count($response->businesses),
+    //     $business_id
+    // );
     
-    $response = get_business($bearer_token, $business_id);
+    // $response = get_business($bearer_token, $business_id);
     
-    print sprintf("Result for business \"%s\" found:\n", $business_id);
-    $pretty_response = json_encode(json_decode($response), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
-    print "$pretty_response\n";
+    // print sprintf("Result for business \"%s\" found:\n", $business_id);
+    // $pretty_response = json_encode(json_decode($response), JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+    // print "$pretty_response\n";
+
+    return $response->businesses;
 }
-
-/**
- * User input is handled here 
- */
-$longopts  = array(
-    "term::",
-    "location::",
-);
-    
-$options = getopt("", $longopts);
-
-$term = $options['term'] ?: $GLOBALS['DEFAULT_TERM'];
-$location = $options['location'] ?: $GLOBALS['DEFAULT_LOCATION'];
-
-query_api($term, $location);
-
-// $oauth = new Oauth1([
-//   'grant_type'   => 'client_credentials',
-//   'client_id'   => '',
-//   'client_secret'   => ''
-//   ]);
-// $stack->push($oauth);
-
-// $oauth = new Oauth1($oauth_config);
-// $stack->push($oauth);
-
-// $client = new Client(['base_uri' => 'https://api.yelp.com/v3/', 
-//                       'handler' => $stack
-//                      ]);
-
-// $app->get('/bars', function(Request $request) use ($app){
-//   $res = $client->get('businesses/search', 
-//                             ['term' => 'bars',
-//                             'latitude' => 37.786882,
-//                             'longitude' => -122.399972
-//                             ]);
-//   $flux = json_decode($res->getBody()->__toString());
-//   return new JsonResponse($flux, 200);
-// });
