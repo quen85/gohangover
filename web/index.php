@@ -24,6 +24,7 @@ $bars = query_api($term, $location);
     <title>GoHangover</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Barrio|Linden+Hill" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/map.css">
   </head>
   <body>

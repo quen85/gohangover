@@ -3,6 +3,15 @@
   height: 50%;
   background-color: #242f3e;
 }
+
+h1{
+  font-family: 'Barrio', cursive;
+  font-size: 50px;
+  margin-top: 100px;
+}
+h2{
+  font-family: 'Linden Hill', cursive;
+}
 /*-------MAP------*/
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
@@ -18,6 +27,7 @@ html, body {
   padding: 0;
   background-color: black;
   color: white;
+  text-align: center;
 }
  .controls {
   margin-top: 10px;
